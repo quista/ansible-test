@@ -1,0 +1,5 @@
+[test-vms]
+testvm01 ansible_ssh_host=127.0.0.1 ansible_ssh_port=12022 ansible_ssh_user=root 
+
+[nm-qs-reporting]
+lnxp-6147 ansible_ssh_host=lnxp-6147.srv.mediaways.net ansible_ssh_user=spiegel 
