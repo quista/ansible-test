@@ -1,0 +1,11 @@
+---
+- hosts: localhost
+
+  tasks:
+
+    - name: Getting PYTHONPATH
+      local_action: shell python -c 'import sys; print(":".join(sys.path))'
+      register: pythonpath
+
+    - debug:
+        msg: "PYTHONPATH: {{ pythonpath.stdout }}"
