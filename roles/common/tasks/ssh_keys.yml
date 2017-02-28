@@ -1,0 +1,22 @@
+---
+# file: roles/common/tasks/main.yml
+- name: Add own SSH public_keys to users with UID > 10000
+  authorized_key: user="{{ item.name }}" key="{{ lookup('file', 'roles/common/files/public_keys/{{ item.name }}.pub') }}" exclusive=yes
+  with_items: "{{ ssh_users }}"
+  when: item.state == "present" and item.uid >= 10000
+  ignore_errors: yes
+  tags: ssh_keys
+
+- name: Add SSH public_keys of user centos and users with state=present from usergroup devops
+  authorized_key: user="centos" key="{{ lookup('file', 'roles/common/files/public_keys/{{ item.name }}.pub') }}"
+  with_items: "{{ ssh_users }}"
+  when: item.name == "centos" or ( item.state == "present" and item.group == "devops" )
+  ignore_errors: yes
+  tags: ssh_keys
+
+- name: Remove SSH public_keys from user centos of users from usergroup devops with state=absent
+  authorized_key: user="centos" key="{{ lookup('file', 'roles/common/files/public_keys/{{ item.name }}.pub') }}" state="absent"
+  with_items: "{{ ssh_users }}"
+  when: item.state == "absent" and item.group == "devops"
+  ignore_errors: yes
+  tags: ssh_keys

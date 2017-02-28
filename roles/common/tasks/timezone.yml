@@ -1,0 +1,5 @@
+---
+# file: roles/common/tasks/timezone.yml
+
+- name: Set up timezone for systems
+  file: src=/usr/share/zoneinfo/Europe/Berlin dest=/etc/localtime owner=root group=root state=link

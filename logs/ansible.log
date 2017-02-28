@@ -1,0 +1,122 @@
+2016-09-12 16:19:59,175 p=4832 u=tobiasherziger |  testvm01 | UNREACHABLE! => {
+    "changed": false, 
+    "msg": "Failed to connect to the host via ssh.", 
+    "unreachable": true
+}
+2016-09-12 16:19:59,176 p=4832 u=tobiasherziger |  ans-tst-02 | UNREACHABLE! => {
+    "changed": false, 
+    "msg": "Failed to connect to the host via ssh.", 
+    "unreachable": true
+}
+2016-09-12 16:19:59,176 p=4832 u=tobiasherziger |  ans-tst-01 | UNREACHABLE! => {
+    "changed": false, 
+    "msg": "Failed to connect to the host via ssh.", 
+    "unreachable": true
+}
+2016-09-12 16:20:00,378 p=4832 u=tobiasherziger |  argon | SUCCESS => {
+    "changed": false, 
+    "ping": "pong"
+}
+2016-09-12 16:20:48,085 p=4863 u=tobiasherziger |  argon | SUCCESS => {
+    "changed": false, 
+    "ping": "pong"
+}
+2016-09-12 16:22:03,625 p=4883 u=tobiasherziger |  anstest01 | UNREACHABLE! => {
+    "changed": false, 
+    "msg": "Failed to connect to the host via ssh.", 
+    "unreachable": true
+}
+2016-09-12 16:22:04,545 p=4883 u=tobiasherziger |  argon | SUCCESS => {
+    "changed": false, 
+    "ping": "pong"
+}
+2016-09-12 16:23:18,512 p=4911 u=tobiasherziger |  anstest01 | UNREACHABLE! => {
+    "changed": false, 
+    "msg": "Failed to connect to the host via ssh.", 
+    "unreachable": true
+}
+2016-09-12 16:23:19,420 p=4911 u=tobiasherziger |  argon | SUCCESS => {
+    "changed": false, 
+    "ping": "pong"
+}
+2016-09-12 16:23:57,467 p=4938 u=tobiasherziger |  anstest01 | UNREACHABLE! => {
+    "changed": false, 
+    "msg": "Failed to connect to the host via ssh.", 
+    "unreachable": true
+}
+2016-09-12 16:23:58,113 p=4938 u=tobiasherziger |  argon | SUCCESS => {
+    "changed": false, 
+    "ping": "pong"
+}
+2016-09-12 16:24:46,930 p=4962 u=tobiasherziger |  anstest01 | UNREACHABLE! => {
+    "changed": false, 
+    "msg": "Failed to connect to the host via ssh.", 
+    "unreachable": true
+}
+2016-09-12 16:24:47,571 p=4962 u=tobiasherziger |  argon | SUCCESS => {
+    "changed": false, 
+    "ping": "pong"
+}
+2016-09-12 16:25:40,402 p=4990 u=tobiasherziger |  anstest01 | UNREACHABLE! => {
+    "changed": false, 
+    "msg": "Failed to connect to the host via ssh.", 
+    "unreachable": true
+}
+2016-09-12 16:25:40,951 p=4990 u=tobiasherziger |  argon | SUCCESS => {
+    "changed": false, 
+    "ping": "pong"
+}
+2016-09-12 16:25:53,447 p=5005 u=tobiasherziger |  Using /Users/tobiasherziger/Repositories/ansible-test/ansible.cfg as config file
+2016-09-12 16:25:53,649 p=5005 u=tobiasherziger |  anstest01 | UNREACHABLE! => {
+    "changed": false, 
+    "msg": "Failed to connect to the host via ssh.", 
+    "unreachable": true
+}
+2016-09-12 16:25:54,280 p=5005 u=tobiasherziger |  argon | SUCCESS => {
+    "changed": false, 
+    "ping": "pong"
+}
+2016-09-12 16:42:04,231 p=5101 u=tobiasherziger |  Using /Users/tobiasherziger/Repositories/ansible-test/ansible.cfg as config file
+2016-09-12 16:42:04,432 p=5101 u=tobiasherziger |  anstest01 | UNREACHABLE! => {
+    "changed": false, 
+    "msg": "Failed to connect to the host via ssh.", 
+    "unreachable": true
+}
+2016-09-12 16:42:05,843 p=5101 u=tobiasherziger |  argon | SUCCESS => {
+    "changed": false, 
+    "ping": "pong"
+}
+2016-09-12 16:42:23,000 p=5117 u=tobiasherziger |  anstest01 | UNREACHABLE! => {
+    "changed": false, 
+    "msg": "Failed to connect to the host via ssh.", 
+    "unreachable": true
+}
+2016-09-12 16:42:23,568 p=5117 u=tobiasherziger |  argon | SUCCESS => {
+    "changed": false, 
+    "ping": "pong"
+}
+2016-09-12 16:42:55,676 p=5132 u=tobiasherziger |  anstest01 | UNREACHABLE! => {
+    "changed": false, 
+    "msg": "Failed to connect to the host via ssh.", 
+    "unreachable": true
+}
+2016-09-12 16:43:15,394 p=5145 u=tobiasherziger |  ec2-52-57-74-185.eu-central-1.compute.amazonaws.com | UNREACHABLE! => {
+    "changed": false, 
+    "msg": "Failed to connect to the host via ssh.", 
+    "unreachable": true
+}
+2016-09-12 16:43:33,552 p=5158 u=tobiasherziger |  ec2-52-57-74-185.eu-central-1.compute.amazonaws.com | UNREACHABLE! => {
+    "changed": false, 
+    "msg": "Failed to connect to the host via ssh.", 
+    "unreachable": true
+}
+2016-09-12 16:45:22,432 p=5178 u=tobiasherziger |  ec2-52-57-74-185.eu-central-1.compute.amazonaws.com | UNREACHABLE! => {
+    "changed": false, 
+    "msg": "Failed to connect to the host via ssh.", 
+    "unreachable": true
+}
+2016-09-12 16:48:26,377 p=5204 u=tobiasherziger |  ec2-52-57-74-185.eu-central-1.compute.amazonaws.com | UNREACHABLE! => {
+    "changed": false, 
+    "msg": "Failed to connect to the host via ssh.", 
+    "unreachable": true
+}

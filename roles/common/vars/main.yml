@@ -1,0 +1,39 @@
+---
+# file: roles/common/vars/main.yml
+
+# TODO: find ab better place to store!
+#icinga2_server: "192.168.255.198"
+
+# The usergroups we want to exist on all systems
+user_groups:
+#  - { name: 'nrpe',       gid:  1001, state: present }
+#  - { name: 'nagios',     gid:  1002, state: present }
+#  - { name: 'icinga',     gid:  1003, state: present }
+#  - { name: 'icingacmd',  gid:  1004, state: present }
+#  - { name: 'icingaweb2', gid:  1005, state: present }
+#  - { name: 'dlaggit',    gid:  1006, state: present }
+#  - { name: 'upsource',   gid:  1007, state: present }
+#  - { name: 'teamcity',   gid:  1008, state: present }
+  - { name: 'devops',     gid: 10000, state: present }
+#  - { name: 'dev',        gid: 10001, state: present }
+#  - { name: 'qa',         gid: 10002, state: present }
+
+# Accounts we want to exist on all systems
+ssh_users:
+##### uid block for system and process users is 10xxx
+  - { name: "centos",   uid: 1000,  comment: "AWS default User",              state: present, group: "users",    groups: "users,adm,wheel,systemd-journal" }
+#  - { name: "nrpe",     uid: 1001,  comment: "Nagios Remote Plugin Executor", state: present, group: "nrpe",     groups: "nrpe"   }
+#  - { name: "logstash", uid: 100X,  comment: "Logstash",                      state: present, group: "logstash", groups: "logstash" }
+##### uid block for devops (DevOps) is 10xxx
+ # - { name: "sgerlach", uid: 10000, comment: "Sebastian Gerlach",             state: present, group: "devops",   groups: "devops" }
+ # - { name: "jhelblin", uid: 10001, comment: "Johann Helbling",               state: present, group: "devops",   groups: "devops" }
+ # - { name: "keisenha", uid: 10002, comment: "Karl-Fried Eisenhauer",         state: absent,  group: "devops",   groups: "devops" }
+ # - { name: "mackerma", uid: 10003, comment: "Manfred Ackermann",             state: present, group: "devops",   groups: "devops" }
+ # - { name: "mkoers",   uid: 10004, comment: "Martin Koers",                  state: present, group: "devops",   groups: "devops" }
+  - { name: "therzige", uid: 10005, comment: "Tobias Herziger",               state: present, group: "devops",   groups: "devops" }
+ # - { name: "gbuss",    uid: 10006, comment: "Gerrit Buss",                   state: present, group: "devops",   groups: "devops" }
+ # - { name: "mheidman", uid: 10007, comment: "Mario Heidmann",                state: present, group: "devops",   groups: "devops" }
+##### uid block for dev (Development) is 11xxx
+#  - { name: "mamoaben", uid: 11000, comment: "Manuel Amoabeng",               state: absent,  group: "dev",      groups: "dev"    }
+##### uid block for qa (Quality Assurance) is 12xxx
+#  - { name: "fkoenig",  uid: 12000, comment: "Frederik Koenig",               state: absent,  group: "qa",       groups: "qa"     }

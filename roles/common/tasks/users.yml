@@ -1,0 +1,6 @@
+---
+# file: roles/common/tasks/users.yml
+- name: create users that are supposed to exist on every system
+  user: comment="{{ item.comment }}" group="{{ item.group }}" groups="{{ item.groups }}" name="{{ item.name }}" state="{{ item.state }}" uid="{{ item.uid }}" remove=yes
+  with_items: "{{ ssh_users }}"
+  tags: users

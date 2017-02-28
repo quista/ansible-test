@@ -1,0 +1,29 @@
+---
+# file: roles/common/tasks/packages.yml
+
+- name: Install common packages
+  yum: name={{ item }} state=present
+  with_items:
+    - epel-release
+    - libselinux-python
+    - vim
+    - tcpdump
+    - curl
+    - wget
+    - unzip
+    - bzip2
+    - ntp
+    - mlocate
+    - lsof
+    - python-lxml
+    - psmisc
+
+- name: change selinux to -> disabled !!! REBOOT REQUIRED !!!
+  selinux: state=disabled
+#  notify: Reboot machine
+
+- name: remove cloud-init
+  yum: name=cloud-init state=absent
+
+- name: Ensure NTP is running.
+  service: name=ntpd state=started enabled=yes

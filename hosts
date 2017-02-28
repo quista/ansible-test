@@ -1,5 +1,15 @@
-[test-vms]
-testvm01 ansible_ssh_host=127.0.0.1 ansible_ssh_port=12022 ansible_ssh_user=root 
+#[test-vms]
+#testvm01 ansible_ssh_host=127.0.0.1 ansible_ssh_port=12022 ansible_ssh_user=root 
 
-[nm-qs-reporting]
-lnxp-6147 ansible_ssh_host=lnxp-6147.srv.mediaways.net ansible_ssh_user=spiegel 
+[argon]
+argon ansible_ssh_host=argon.herziger.de ansible_ssh_user=root
+
+#[ans-test]
+#ans-tst-01 ansible_ssh_host=192.168.250.11 ansible_ssh_user=vagrant
+#ans-tst-02 ansible_ssh_host=192.168.250.12 ansible_ssh_user=vagrant
+
+[aws]
+ec2-52-57-74-185.eu-central-1.compute.amazonaws.com 
+
+[aws:vars]
+ansible_user = centos

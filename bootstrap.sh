@@ -67,9 +67,9 @@ enabled=0
 gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
 EOF
   yum makecache
-  yum -y install redhat-lsb-core tree bash-completion git rsync vim gawk wget w3m bind-utils
   yum -y update
-
+  yum -y install redhat-lsb-core tree bash-completion git rsync vim gawk wget w3m bind-utils dstat net-tools
+  
   echo "Setting timezone"
   cp -fv /usr/share/zoneinfo/Europe/Berlin /etc/localtime
   echo 'ZONE="Europe/Berlin"'   >/etc/sysconfig/clock
@@ -78,6 +78,9 @@ EOF
 
   echo "Generating some locales"
   localedef -c -i de_DE -f UTF-8 de_DE.UTF-8
+
+  echo "Copy SSH Key"
+  echo 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDRY4Nj2nBoUQusMaVnAY3VoGj8MVtEnRGIFZs0XUVFexlYuG62GmfUSfJnsm575sVUnp9HihVS2eLPqIFdklVd0Uq+cnVoeITt1pOEgc2+9YiUX6sO1MOUCXXxD7bnqwQtAxkhZPMinN+2ZAkvg2WpGwR1qPWJ6r7ToBV7un8MwvZWkG1QHXWax8kGAv5WZRtLt85BunRhssPFiOHQLlY0bnzg7ORjUwQDc4nNCDVjYbCr6zZRnfw4zUI88JAjuxnS64IgbEQd3f7o1yoEo/jTSHw7+89GP1sGfzsyciF5VpNUzRigQljoLyLBjzywu3gr5bAWN/Gq6TtLRO1BiNCn tobiasherziger@tobiass-mbp.intern 2015-09-03' >> /home/centos/.ssh/authorized_keys
 
   echo "Configuration done"
   touch $TOGGLEFILE

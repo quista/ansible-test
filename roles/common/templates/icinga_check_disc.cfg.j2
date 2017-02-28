@@ -1,0 +1,7 @@
+# LOAD1,LOAD5,LOAD15
+{% if icinga2_disc_warn is defined and icinga2_disc_crit is defined %}
+command[check_disk]=/usr/lib64/nagios/plugins/check_disk -w {{ icinga2_disc_warn }}% -c {{ icinga2_disc_crit }}% {% for device in icinga2_disc_list %}-p {{ device }}{% endfor %}
+{% else %}
+# TODO: implement a suitable solution for the discs
+command[check_disk]=/usr/lib64/nagios/plugins/check_disk -w {{ icinga2_disc_warn }}% -c {{ icinga2_disc_crit }}% {% for device in icinga2_disc_list %}-p {{ device }}{% endfor %}
+{% endif %}

@@ -1,0 +1,10 @@
+---
+# file: roles/common/handlers/main.yml
+- name: Restart sshd
+  service: name=sshd state=restarted
+
+- name: Reboot machine
+  command: shutdown -r now "Ansible triggered reboot"
+
+- name: Restart nrpe
+  service: name=nrpe state=restarted

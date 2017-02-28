@@ -1,0 +1,61 @@
+---
+
+- name: Setup servers on AWS
+  hosts: localhost
+  gather_facts: no
+  tasks:
+    - name: Launch Instance
+      ec2:
+        aws_access_key: AKIAI4QETTW7RWOGBE3A
+        aws_secret_key: 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
+        region: eu-central-1
+        key_name: therzigerprivate
+        group_id: sg-330cc35a
+        instance_type: t2.micro
+        image: ami-9bf712f4
+        volumes:
+          - device_name: /dev/sda1
+            volume_type: gp2
+            volume_size: 8
+            delete_on_termination: true
+        instance_tags:
+          with_items:
+            - Env: test
+            - Name: "{{ hostname }}"
+        vpc_subnet_id: subnet-d50ee1ae
+        assign_public_ip: yes
+        wait: true
+        count: 1
+      register: ec2
+
+    - name: Wait for SSH
+      wait_for:
+        host: "{{ item.public_ip }}"
+        port: 22
+        delay: 10
+        timeout: 180
+        state: started
+      with_items: "{{ ec2.instances }}"
+
+    - name: Wait a little longer for CentOS
+      pause: seconds=20
+
+    - name: Add host to temporary dynamic_hosts group
+      add_host:
+        name: "{{ hostname }}"
+        groups: dynamic_hosts
+        ansible_ssh_host: "{{ item.public_ip }}"
+        ansible_ssh_private_key_file: ~/Dropbox/therzigerprivate.pem
+        ansible_ssh_user: centos
+        #ec2_vars: "{{ ec2.results[item.0]['instances'][0] }}"
+        #ec2_instance_ids: "{{ ec2.results[item.0]['instance_ids'] }}"
+      with_items: "{{ ec2.instances }}"
+
+- name: Provision new instance
+  hosts: dynamic_hosts
+  become: yes
+  roles:
+    - common
+  #tasks:
+  #  - name: Set hostname to inventory_hostname
+  #    command: sudo hostnamectl set-hostname "{{ hostname }}"

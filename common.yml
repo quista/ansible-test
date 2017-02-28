@@ -1,0 +1,7 @@
+---
+# file: common.yml
+- hosts: all
+  remote_user: centos
+  become: true
+  roles:
+    - common

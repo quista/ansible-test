@@ -1,0 +1,6 @@
+# LOAD1,LOAD5,LOAD15
+{% if icinga2_load_warn is defined and icinga2_load_crit is defined %}
+command[check_load]=/usr/lib64/nagios/plugins/check_load -w {{ icinga2_load_warn }} -c {{ icinga2_load_crit }}
+{% else %}
+command[check_load]=/usr/lib64/nagios/plugins/check_load -w {{ ansible_processor_cores * 4 }},{{ ansible_processor_cores * 2 }},{{ ansible_processor_cores }} -c {{ ansible_processor_cores * 12 }},{{ ansible_processor_cores * 10 }},{{ ansible_processor_cores * 8 }}
+{% endif %}

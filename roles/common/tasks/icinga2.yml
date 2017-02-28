@@ -1,0 +1,73 @@
+---
+# file: roles/common/tasks/icinga2.yml
+
+# groups
+- name: create group nrpe
+  group: name=nrpe state=present gid=1001
+
+- name: create group nagios
+  group: name=nagios state=present gid=1002
+
+# user
+- name: create user nrpe
+  user: name=nrpe shell=/sbin/nologin groups=nrpe home=/var/run/nrpe uid=1001
+
+- name: create user nagios
+  user: name=nagios shell=/sbin/nologin groups=nagios home=/var/spool/nagios uid=1002
+
+- name: create /etc/icinga2/conf.d/{{ ansible_hostname }}.conf
+  template: src=roles/common/templates/icinga_host.conf.j2 dest=/etc/icinga2/hosts.d/{{ ansible_hostname }}.conf owner=icinga group=icinga mode=0644
+  delegate_to: 192.168.255.198
+  tags:
+    - icinga2
+
+- name: Install plugins
+  yum: name={{ item }} state=present
+  with_items:
+    - nrpe
+    - nagios-plugins-check-updates
+    - nagios-plugins-dig
+    - nagios-plugins-disk
+    - nagios-plugins-dns
+    - nagios-plugins-dummy
+    - nagios-plugins-file_age
+    - nagios-plugins-icmp
+    - nagios-plugins-ifstatus
+    - nagios-plugins-load
+    - nagios-plugins-log
+    - nagios-plugins-ntp
+    - nagios-plugins-procs
+    - nagios-plugins-rpc
+    - nagios-plugins-snmp
+    - nagios-plugins-ssh
+    - nagios-plugins-swap
+    - nagios-plugins-tcp
+    - nagios-plugins-time
+    - nagios-plugins-uptime
+    - nagios-plugins-users
+    - nagios-plugins-mailq
+  tags:
+    - nrpe
+
+- name: create /etc/icinga2/conf.d/{{ ansible_hostname }}.conf
+  template: src=roles/common/templates/nrpe.conf.j2 dest=/etc/nagios/nrpe.cfg owner=root group=root mode=0644
+  notify: Restart nrpe
+  tags:
+    - nrpe
+
+- name: create /etc/icinga2/conf.d/icinga_check_load.cfg
+  template: src=roles/common/templates/icinga_check_load.cfg.j2 dest=/etc/nrpe.d/icinga_check_load.cfg owner=root group=root mode=0644
+  notify: Restart nrpe
+  tags:
+    - nrpe
+
+- name: create /etc/icinga2/conf.d/icinga_check_disc.cfg
+  template: src=roles/common/templates/icinga_check_disc.cfg.j2 dest=/etc/nrpe.d/icinga_check_disc.cfg owner=root group=root mode=0644
+  notify: Restart nrpe
+  tags:
+    - nrpe
+
+- name: enable nrpe
+  service: name=nrpe enabled=yes
+  tags:
+    - nrpe

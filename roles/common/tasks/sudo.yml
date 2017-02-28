@@ -1,0 +1,29 @@
+---
+# file: roles/common/tasks/sudo.yml
+- name: Permit users in group devops to sudo without password
+  lineinfile: "dest=/etc/sudoers 
+              regexp='^%devops ' 
+              line='%devops ALL=(ALL) NOPASSWD: ALL'
+              state=present"
+  tags: sudo
+
+- name: Permit users in group dev to sudo su without password to several users
+  lineinfile: "dest=/etc/sudoers 
+              regexp='^%dev ' 
+              line='%dev ALL=(upsource:upsource) NOPASSWD: ALL'
+              state=present"
+  tags: sudo
+
+- name: Permit users in group qa to sudo su without password to several users
+  lineinfile: "dest=/etc/sudoers 
+              regexp='^%qa ' 
+              line='%qa ALL=(upsource:upsource) NOPASSWD: ALL'
+              state=present"
+  tags: sudo
+
+- name: Disable requiretty
+  lineinfile: "dest=/etc/sudoers 
+              regexp='^Defaults.*requiretty' 
+              line='Defaults !requiretty'
+              state=present"
+  tags: sudo

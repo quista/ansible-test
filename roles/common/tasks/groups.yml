@@ -1,0 +1,6 @@
+---
+# file: roles/common/tasks/groups.yml
+- name: create unique groups
+  group: name={{ item.name }} gid={{ item.gid }} state={{ item.state }}
+  with_items: "{{ user_groups }}"
+  tags: groups

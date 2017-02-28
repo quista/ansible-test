@@ -1,0 +1,11 @@
+---
+# file: roles/common/tasks/main.yml
+- include: packages.yml
+- include: groups.yml
+- include: users.yml
+- include: timezone.yml
+#- include: ssh_keys.yml
+#- include: sshd.yml
+#- include: sudo.yml
+#- include: resolv_conf.yml
+#- include: icinga2.yml
