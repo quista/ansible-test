@@ -6,8 +6,8 @@
   tasks:
     - name: Launch Instance
       ec2:
-        aws_access_key: AKIAI4QETTW7RWOGBE3A
-        aws_secret_key: 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
+        aws_access_key: 0
+        aws_secret_key: 0
         region: eu-central-1
         key_name: therzigerprivate
         group_id: sg-330cc35a
